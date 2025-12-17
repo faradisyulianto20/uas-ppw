@@ -4,6 +4,11 @@
 @section('content')
     <section class="p-4 bg-white rounded-lg min-h-[50vh]">
         <h1 class="text-3xl font-bold text-[#C0392B] mb-6 text-center">Pegawai</h1>
+        @if (session('success'))
+            <div class="mb-4 rounded-md bg-green-100 px-4 py-3 text-green-700">
+                {{ session('success') }}
+            </div>
+        @endif
         <div class="mx-auto max-w-screen-xl">
             <div class="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <a href="{{ route('pegawai.add') }}" class="rounded-md bg-green-600 px-4 py-2 text-sm text-white hover:bg-green-700">
@@ -78,6 +83,10 @@
                         @endforelse
                     </tbody>
                 </table>
+            </div>
+
+            <div class="p-4">
+                {{ $pegawai->links() }}
             </div>
         </div>
     </section>
