@@ -11,12 +11,12 @@ class PegawaiSeeder extends Seeder
     public function run(): void
     {
         $faker = Faker::create('en_US');
-        $pekerjaanIds = DB::table('faradis_539894_pekerjaan')->pluck('id')->toArray();
+        $pekerjaanIds = DB::table('pekerjaan')->pluck('id')->toArray();
         $totalPegawai = 2500;
 
         for ($i = 0; $i < $totalPegawai; $i++) {
             $gender = $faker->randomElement(['male', 'female']);
-            DB::table('faradis_539894_pegawai')->insert([
+            DB::table('pegawai')->insert([
                 'pekerjaan_id' => $faker->randomElement($pekerjaanIds),
                 'nama' => $gender === 'male' ? $faker->firstNameMale().' '.$faker->lastName() : $faker->firstNameFemale().' '.$faker->lastName(),
                 'email' => $faker->unique()->safeEmail(),
