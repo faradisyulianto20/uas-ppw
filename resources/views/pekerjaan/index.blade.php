@@ -4,6 +4,11 @@
 @section('content')
     <section class="p-4 bg-white rounded-lg min-h-[50vh]">
         <h1 class="text-3xl font-bold text-[#C0392B] mb-6 text-center">Pekerjaan</h1>
+        @if (session('success'))
+            <div class="mb-4 rounded-md bg-green-100 px-4 py-3 text-green-700">
+                {{ session('success') }}
+            </div>
+        @endif
         <div class="mx-auto max-w-screen-xl">
             <div class="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <a href="{{ route('pekerjaan.add') }}" class="rounded-md bg-green-600 px-4 py-2 text-sm text-white hover:bg-green-700">
@@ -33,7 +38,9 @@
                             <td class="px-4 py-3">{{ $k+1 }}</td>
                             <td class="px-4 py-3 font-medium text-gray-900">{{ $d->nama }}</td>
                             <td class="px-4 py-3 text-gray-600">{{ $d->deskripsi }}</td>
-                            <td class="px-4 py-3 text-gray-600">{{ 100 }}</td>
+                            <td class="px-4 py-3 text-gray-600">
+                                {{ $d->pegawai_count }}
+                            </td>
                             <td class="px-4 py-3 text-center text-gray-600">
                                 <div class="inline-flex rounded-md shadow-sm" role="group">
                                     <a href="{{ route('pekerjaan.edit', ['id' => $d->id]) }}" class="cursor-pointer rounded-l-md border border-gray-300 bg-white px-3 py-1.5 text-xs font-medium text-blue-600 hover:bg-blue-50">
